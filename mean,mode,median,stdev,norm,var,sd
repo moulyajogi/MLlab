@@ -1,0 +1,92 @@
+#python program to find mean
+
+numbers=[1,2,3,4,5,6]
+n=len(numbers)
+sums=sum(numbers)
+mean=sums/n
+print("Mean is "+str(mean))
+
+Mean is 3.5
+
+#finding median
+numbers=[1,2,3,4,5,6]
+n=len(numbers)
+numbers.sort()
+
+if n%2==0:
+    median1=numbers[n//2]
+    median2=numbers[n//2-1]
+    median=(median1+median2)/2
+else:
+    median=numbers[n//2] 
+print("Median is "+str(median))
+    
+Median is 3.5
+
+# mode of elements
+from collections import Counter
+# list of elements to calculate mode
+n_num = [1, 2, 3, 4, 5, 5]
+n = len(n_num)
+data = Counter(n_num)
+get_mode = dict(data)
+mode = [k for k, v in get_mode.items() if v == max(list(data.values()))]
+if len(mode) == n:
+    get_mode = "No mode found"
+else:
+    get_mode = "Mode is / are: " + ', '.join(map(str, mode))
+      
+print(get_mode)
+
+Mode is / are: 5
+
+#variance
+test_list = [6, 7, 3, 9, 10, 15]
+mean = sum(test_list) / len(test_list)
+variance = sum((i - mean) ** 2 for i in test_list) / len(test_list)
+
+print("variance is "+str(variance))
+sd=variance**0.5
+print("standard deviation is "+str(sd))
+
+variance is 13.888888888888891
+standard deviation is 3.72677996249965
+
+#normalization
+n_list=[11,23.4,2435,0.56,234.55]
+list_max=max(n_list)
+list_min=min(n_list)
+print("value  : Normalizes value\n")
+for x in n_list:
+    norm=(x-list_min)/(list_max-list_min)
+    print("{} : {}".format(x,norm))
+    
+value  : Normalizes value
+
+11 : 0.004288460590525952
+23.4 : 0.009382034471993558
+2435 : 1.0
+0.56 : 0.0
+234.55 : 0.09611656068746817
+
+#standardization
+import math
+a=[0.53, 1.3,1, 1.9, 2.5,4]
+
+mean=sum(a)/len(a)
+variance = sum((i - mean) ** 2 for i in a) / len(a)
+sd=variance**0.5
+
+print("value  : standardization value\n")
+for x in a:
+    s=(x-mean)/sd
+    print("{} : {}".format(x,s))
+    
+    value  : standardization value
+
+0.53 : -1.1758091121054897
+1.3 : -0.5009969260275565
+1 : -0.7639107647592188
+1.9 : 0.0248307514357679
+2.5 : 0.5506584288990926
+4 : 1.8652276225574036

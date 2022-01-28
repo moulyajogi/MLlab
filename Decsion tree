@@ -1,0 +1,75 @@
+import pandas as pd
+import numpy as np
+data = pd.read_csv('zoo.csv',index_col=False)
+data
+
+x1=data['hair'].values
+x2=data['feathers'].values
+x3=data['eggs'].values
+x4=data['milk'].values
+x5=data['airborne'].values
+x6=data['aquatic'].values
+x7=data['predator'].values
+x8=data['toothed'].values
+x9=data['backbone'].values
+x10=data['breathes'].values
+x11=data['venomous'].values
+x12=data['fins'].values
+x13=data['legs'].values
+x14=data['tail'].values
+x15=data['domestic'].values
+x16=data['catsize'].values
+y =data['type'].values
+
+
+X = np.array(list(zip(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15,x16)))
+X
+
+Y=y
+Y
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X,Y,test_size=0.25)
+
+
+from sklearn.metrics import classification_report,confusion_matrix,accuracy_score
+from sklearn import tree
+
+decision = tree.DecisionTreeClassifier(criterion='gini')
+decision.fit(X_train,y_train)
+
+y_predict=decision.predict(X_test)
+y_score = accuracy_score(y_test,y_predict)
+print('Accuracy: ', y_score)
+y_test
+
+print(classification_report(y_test,y_predict))
+
+print("Confusion matrix")
+print(confusion_matrix(y_test,y_predict))
+
+Accuracy:  0.9615384615384616
+              precision    recall  f1-score   support
+
+           1       1.00      1.00      1.00        10
+           2       1.00      1.00      1.00         5
+           3       1.00      0.50      0.67         2
+           4       1.00      1.00      1.00         4
+           5       0.50      1.00      0.67         1
+           6       1.00      1.00      1.00         2
+           7       1.00      1.00      1.00         2
+
+    accuracy                           0.96        26
+   macro avg       0.93      0.93      0.90        26
+weighted avg       0.98      0.96      0.96        26
+
+Confusion matrix
+[[10  0  0  0  0  0  0]
+ [ 0  5  0  0  0  0  0]
+ [ 0  0  1  0  1  0  0]
+ [ 0  0  0  4  0  0  0]
+ [ 0  0  0  0  1  0  0]
+ [ 0  0  0  0  0  2  0]
+ [ 0  0  0  0  0  0  2]]
+
+print confusion matrix for each accuracy class
